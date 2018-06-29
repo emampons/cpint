@@ -11,10 +11,14 @@ private:
 
 public:
     BigInt();
-    BigInt(int );
-    BigInt(std::string);
+    explicit BigInt(int );
+    explicit BigInt(std::string);
     ~BigInt();
 
+    BigInt& operator+(const BigInt& big);
+    BigInt& operator*(const BigInt& big );
+    BigInt& operator-(const BigInt& big);
+    BigInt& operator/(const BigInt& big);
 
     std::string to_string(BigInt);
 
