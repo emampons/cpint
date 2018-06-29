@@ -2,6 +2,7 @@
 #include "bigint/bigint.h
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    BigInt test_int;
+    std::cout<<test_int.to_string(test_int);
     return 0;
 }

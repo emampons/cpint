@@ -12,3 +12,7 @@ BigInt::BigInt(std::string) {
 
 }
 
+std::string BigInt::to_string(BigInt) {
+    return std::string();
+}
+

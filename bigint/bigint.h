@@ -16,5 +16,8 @@ public:
     ~BigInt();
 
 
+    std::string to_string(BigInt);
+
+
 };
 #endif //CINT_BIGINT_H
