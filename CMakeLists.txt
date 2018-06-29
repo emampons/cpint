@@ -3,4 +3,4 @@ project(cint)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(cint main.cpp)
+add_executable(cint main.cpp bigint/bigint.cpp bigint/bigint.h)
