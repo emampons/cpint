@@ -9,9 +9,9 @@
 # Table of Contents
 - [Packages](#packages)
 - [Dependencies](#dependencies)
-- [Using](#usage)
+- [Usage](#usage)
 
-# Features
+# Packages
 In progress:
 - Big Int
 
