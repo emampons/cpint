@@ -1,12 +1,12 @@
 #ifndef CINT_BIGINT_H
 #define CINT_BIGINT_H
 
-#include <array>
+#include <vector>
 #include <string>
 
 class BigInt {
 private:
-    std::array digits;
+    std::vector<int> digits;
     std::string string_digits;
 
 public:
@@ -20,7 +20,7 @@ public:
     BigInt& operator-(const BigInt& big);
     BigInt& operator/(const BigInt& big);
 
-    std::string to_string(BigInt);
+    std::string to_string();
 
 
 };
