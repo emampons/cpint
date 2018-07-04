@@ -27,15 +27,6 @@ BigInt::BigInt(std::string number) {
 BigInt::~BigInt() = default;
 
 
-
-std::string BigInt::to_string() {
-    std::ostringstream stream;
-    for(auto &a: digits)
-        stream<<a;
-
-    return stream.str();
-}
-
 BigInt BigInt::operator+(const BigInt &big) {
     BigInt ref = *this;
     ref += big;
@@ -57,6 +48,7 @@ BigInt & BigInt::operator+=(const BigInt& big) {
             sum += *this_iterator;
         }
         else{
+            //accounts for when second number is longer than first
             digits.push_back(0);
             this_iterator = digits.end()-1;
         }
@@ -84,3 +76,11 @@ BigInt & BigInt::operator+=(const BigInt& big) {
 //    return <#initializer#>;
 //}
 
+// TODO - Fix order
+std::string BigInt::to_string() {
+    std::ostringstream stream;
+    for(auto &a: digits)
+        stream<<a;
+
+    return stream.str();
+}
