@@ -11,22 +11,22 @@ private:
 
 public:
     BigInt();
-    explicit BigInt(int );
+    explicit BigInt(int);
     explicit BigInt(std::string);
     ~BigInt();
 
     // Addition
-    BigInt operator+(const BigInt& big);
-    BigInt& operator+=(const BigInt& big);
+    BigInt operator+(const BigInt&);
+    BigInt& operator+=(const BigInt& );
     // Multiplication
-    //BigInt operator*(const BigInt& big);
-    //BigInt& operator*=(const BigInt& big );
+    //BigInt operator*(const BigInt&);
+    //BigInt& operator*=(const BigInt&);
     // Subtraction
-    //BigInt operator-(const BigInt& big);
-    //BigInt& operator-=(const BigInt& big);
+    BigInt operator-(const BigInt&);
+    BigInt& operator-=(const BigInt&);
     // Division
-    //BigInt operator/(const BigInt& big);
-    //BigInt& operator/=(const BigInt& big);
+    //BigInt operator/(const BigInt&);
+    //BigInt& operator/=(const BigInt&);
 
     std::string to_string();
 
