@@ -147,8 +147,9 @@ std::string BigInt::to_string() {
     std::ostringstream stream;
     for(auto &a: digits)
         stream<<a;
-
-    return stream.str();
+    std::string ret = stream.str();
+    std::reverse(ret.begin(), ret.end());
+    return ret;
 }
 
 
