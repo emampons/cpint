@@ -116,26 +116,12 @@ BigInt BigInt::operator*(const BigInt &big) {
 BigInt& BigInt::operator*=(const BigInt& big) {
     auto this_iterator = digits.begin();
     auto that_iterator = big.digits.begin();
-    int product = 1;
-    int carry = 0;
-    while(that_iterator != big.digits.end() || this_iterator != digits.end()){
-
-        if(that_iterator != big.digits.end()){
-            product *= *that_iterator;
-            ++that_iterator;
-        }
-        if(this_iterator != digits.end()){
-            product *= *this_iterator;
-        }
-        else{
-            //accounts for when second number is longer than first
-            digits.push_back(0);
-            this_iterator = digits.end()-1;
+    BigInt ret (1);
+    for(;this_iterator != digits.end(); this_iterator++){
+        for(; that_iterator != big.digits.end(); that_iterator++){
+            ret += *that_iterator * *this_iterator;
         }
 
-        *this_iterator = product % 10 + carry;
-        ++this_iterator;
-        product /= 10;
 
 
     }
@@ -150,6 +136,11 @@ std::string BigInt::to_string() {
     std::string ret = stream.str();
     std::reverse(ret.begin(), ret.end());
     return ret;
+}
+
+BigInt &BigInt::operator+=(long long) {
+
+    return *this;
 }
 
 

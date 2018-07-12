@@ -18,6 +18,7 @@ public:
     // Addition
     BigInt operator+(const BigInt&);
     BigInt& operator+=(const BigInt&);
+    BigInt& operator+=(long long);
     // Multiplication
     BigInt operator*(const BigInt&);
     BigInt& operator*=(const BigInt&);
