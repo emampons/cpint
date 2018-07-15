@@ -82,6 +82,12 @@ BigInt& BigInt::operator+=(const BigInt& big) {
 }
 
 
+BigInt &BigInt::operator+=(long long) {
+
+    return *this;
+}
+
+
 BigInt BigInt::operator-(const BigInt& big) {
     BigInt ref = *this;
     ref -= big;
@@ -101,11 +107,7 @@ BigInt& BigInt::operator-=(const BigInt& big) {
     return *this;
 }
 
-//
-//BigInt & BigInt::operator/(const BigInt& big) {
-//    return <#initializer#>;
-//}
-//
+
 
 BigInt BigInt::operator*(const BigInt &big) {
     BigInt ref = *this;
@@ -138,10 +140,6 @@ std::string BigInt::to_string() {
     return ret;
 }
 
-BigInt &BigInt::operator+=(long long) {
-
-    return *this;
-}
 
 
 
