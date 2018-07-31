@@ -15,7 +15,6 @@ public:
     explicit BigInt(std::string);
     ~BigInt();
 
-
     // Addition
     BigInt operator+(const BigInt&);
     BigInt& operator+=(const BigInt&);

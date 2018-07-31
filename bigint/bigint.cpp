@@ -42,6 +42,9 @@ BigInt::BigInt(std::string number) {
 }
 
 
+
+
+
 BigInt::~BigInt() = default;
 
 
@@ -139,6 +142,7 @@ std::string BigInt::to_string() {
     std::reverse(ret.begin(), ret.end());
     return ret;
 }
+
 
 
 
