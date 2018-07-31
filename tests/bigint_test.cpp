@@ -24,9 +24,22 @@ TEST_F(BigIntTest, createBigIntLong){
 }
 
 TEST_F(BigIntTest,createBigIntString){
-    ASSERT_EQ("1", "1");
+    num2 = BigInt("45");
+    ASSERT_EQ("45", num2.to_string());
 }
 
 TEST_F(BigIntTest,addBigIntLongs){
-    ASSERT_EQ("sum", "sum");
+    num1 = num1 + num1;
+    ASSERT_EQ("112", num1.to_string());
 }
+
+TEST_F(BigIntTest,addBigIntStrings){
+    num2 = num2 + num2;
+    ASSERT_EQ("112", num2.to_string());
+}
+
+TEST_F(BigIntTest,addDifferent){
+    num1 = num1 + num2;
+    ASSERT_EQ("112", num1.to_string());
+}
+
