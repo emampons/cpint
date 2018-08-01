@@ -1,4 +1,4 @@
-<h1 align="center">Cint</h1>
+<h1 align="center">CPint</h1>
 
 
 <div align="center">
