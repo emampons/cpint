@@ -47,5 +47,8 @@ TEST_F(BigIntTest,addDifferent){
     num1 = num1 + num2;
     ASSERT_EQ("101", num1.to_string());
 
+    num1 = num1 + num2;
+    ASSERT_EQ("157", num1.to_string());
+
 }
 
