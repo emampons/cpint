@@ -7,9 +7,14 @@ BigInt::BigInt() = default;
 
 BigInt::BigInt(long long number) {
     while(number > 0){
-        if()
-        digits.push_back(number%10);
-        number /= 10;
+        if(size > -1 ){
+            digits[size] = number%10;
+            number /= 10;
+            size--;
+        }
+        else{
+            resize();
+        }
     }
 }
 

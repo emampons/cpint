@@ -6,9 +6,8 @@
 
 class BigInt {
 private:
-    //std::vector<int> digits;
     static const int DEFAULT_SIZE = 20;
-    int size = 0;
+    int size = 19;
     std::array<int, DEFAULT_SIZE> digits;
     std::array<int> resize();
 
