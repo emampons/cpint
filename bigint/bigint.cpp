@@ -27,75 +27,86 @@ struct NotABigIntException: public std::exception
 } NotABigIntException;
 
 
-//BigInt::BigInt(std::string number) {
-//    std::size_t found = number.find_first_not_of("1234567890");
-//    // Makes sure string only contains numbers and no other characters
-//    if(found == std::string::npos){
-//        unsigned long length = number.length();
-//        while(length){
-//            char temp = number[length-1];
-//            int place = temp - '0';
-//            digits.push_back(place);
-//            length--;
-//        }
-//
-//    }
-//    else {
-//        throw NotABigIntException;
-//    }
-//
-//}
-//
-//
-//
-//
-//
+BigInt::BigInt(std::string number) {
+    std::size_t found = number.find_first_not_of("1234567890");
+    // Makes sure string only contains numbers and no other characters
+    if(found == std::string::npos){
+        unsigned long length = number.length();
+        while(length){
+            char temp = number[length-1];
+            int place = temp - '0';
+            if(size > -1){
+                digits[size] = place;
+                size--;
+                length--;
+            }
+            else{
+                resize();
+                digits[size] = place;
+                size--;
+                length--;
+            }
+
+        }
+
+    }
+    else {
+        throw NotABigIntException;
+    }
+
+}
+
+
+
+
+
 BigInt::~BigInt() = default;
 
-//
-//BigInt BigInt::operator+(const BigInt &big) {
-//    BigInt ref = *this;
-//    ref += big;
-//    return ref;
-//}
-//
-//BigInt& BigInt::operator+=(const BigInt& big) {
-//    auto this_iterator = digits.begin();
-//    auto that_iterator = big.digits.begin();
-//    int sum = 0;
-//
-//    while(this_iterator != digits.end() || that_iterator != big.digits.end()){
-//
-//        if(that_iterator != big.digits.end()){
-//            sum += *that_iterator;
-//            ++that_iterator;
-//        }
-//        if(this_iterator != digits.end()){
-//            sum += *this_iterator;
-//        }
-//        else{
-//            //accounts for when second number is longer than first
-//            digits.push_back(0);
-//            this_iterator = digits.end()-1;
-//        }
-//
-//        *this_iterator = sum % 10;
-//        ++this_iterator;
-//        sum /= 10;
-//
-//    }
-//    if(sum)
-//        digits.push_back(1);
-//    return *this;
-//}
-//
-//
-//BigInt &BigInt::operator+=(long long) {
-//
-//    return *this;
-//}
-//
-//
+
+BigInt BigInt::operator+(const BigInt &big) {
+    BigInt ref = *this;
+    ref += big;
+    return ref;
+}
+
+BigInt& BigInt::operator+=(const BigInt& big) {
+    auto this_iterator = digits.begin();
+    auto that_iterator = big.digits.begin();
+    int sum = 0;
+
+    while(this_iterator != digits.end() || that_iterator != big.digits.end()){
+
+        if(that_iterator != big.digits.end()){
+            sum += *that_iterator;
+            ++that_iterator;
+        }
+        if(this_iterator != digits.end()){
+            sum += *this_iterator;
+        }
+        else{
+            //accounts for when second number is longer than first
+            digits[size] = 0;
+            this_iterator = digits.end()-1;
+        }
+
+        *this_iterator = sum % 10;
+        ++this_iterator;
+        sum /= 10;
+
+    }
+    if(sum)
+        digits[size] = 1;
+
+    return *this;
+}
+
+
+BigInt &BigInt::operator+=(long long) {
+
+    return *this;
+}
+
+
 //BigInt BigInt::operator-(const BigInt& big) {
 //    BigInt ref = *this;
 //    ref -= big;

@@ -13,7 +13,7 @@ namespace  {
         BigInt num2;
         BigIntTest (){
           num1;
-          //num2;
+          num2;
         }
     };
 }
@@ -23,18 +23,18 @@ TEST_F(BigIntTest, createBigIntLong){
     ASSERT_EQ("56", num1.to_string());
 }
 
-//TEST_F(BigIntTest,createBigIntString){
-//    num2 = BigInt("45");
-//    ASSERT_EQ("45", num2.to_string());
-//}
-//
-//TEST_F(BigIntTest,addBigIntLongs){
-//    num1 = BigInt(56);
-//    num1 = num1 + num1;
-//    ASSERT_EQ("112", num1.to_string());
-//
-//}
-//
+TEST_F(BigIntTest,createBigIntString){
+    num2 = BigInt("45");
+    ASSERT_EQ("45", num2.to_string());
+}
+
+TEST_F(BigIntTest,addBigIntLongs){
+    num1 = BigInt(56);
+    num1 = num1 + num1;
+    ASSERT_EQ("112", num1.to_string());
+
+}
+
 //TEST_F(BigIntTest,addBigIntStrings){
 //    num2 = BigInt("45");
 //    num2 = num2 + num2;
