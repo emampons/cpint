@@ -8,8 +8,8 @@ class BigInt {
 private:
     static const int DEFAULT_SIZE = 20;
     int size = 19;
-    std::array<int, DEFAULT_SIZE> digits;
-    std::array<int> resize();
+    std::array<int, DEFAULT_SIZE> digits = {};
+    int* resize();
 
 public:
     BigInt();
