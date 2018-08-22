@@ -1,13 +1,16 @@
 #ifndef CINT_BIGINT_H
 #define CINT_BIGINT_H
 
-#include <vector>
+#include <array>
 #include <string>
 
 class BigInt {
 private:
-    std::vector<int> digits;
-
+    //std::vector<int> digits;
+    static const int DEFAULT_SIZE = 20;
+    int size = 0;
+    std::array<int, DEFAULT_SIZE> digits;
+    std::array<int> resize();
 
 public:
     BigInt();

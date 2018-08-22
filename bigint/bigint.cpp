@@ -7,7 +7,7 @@ BigInt::BigInt() = default;
 
 BigInt::BigInt(long long number) {
     while(number > 0){
-
+        if()
         digits.push_back(number%10);
         number /= 10;
     }
@@ -141,6 +141,10 @@ std::string BigInt::to_string() {
     std::string ret = stream.str();
     std::reverse(ret.begin(), ret.end());
     return ret;
+}
+
+std::array<int> BigInt::resize() {
+    return nullptr;
 }
 
 
