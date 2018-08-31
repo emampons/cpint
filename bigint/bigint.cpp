@@ -85,7 +85,7 @@ BigInt& BigInt::operator+=(const BigInt& big) {
         }
         else{
             //accounts for when second number is longer than first
-            digits[size] = 0;
+            //digits[size] = 0;
             this_iterator = digits.end()-1;
         }
 
