@@ -73,6 +73,7 @@ BigInt& BigInt::operator+=(const BigInt& big) {
     auto this_iterator = digits.end()-1;
     auto that_iterator = big.digits.end()-1;
     int sum = 0;
+    size = digits.size();
 
     while(this_iterator != digits.begin() || that_iterator != big.digits.begin()){
 
@@ -82,30 +83,27 @@ BigInt& BigInt::operator+=(const BigInt& big) {
         }
         if(this_iterator != digits.begin()){
             sum += *this_iterator;
+            --size;
         }
-        else{
-           // accounts for when second number is longer than first
-            digits[size] = 0;
-            this_iterator = digits.end()-2;
-        }
+//        else{
+//           // accounts for when second number is longer than first
+//            digits[size] = 0;
+//            this_iterator = digits.begin()+1;
+//        }
 
         *this_iterator = sum % 10;
         --this_iterator;
+
         sum /= 10;
 
     }
 
     if(sum)
-        --*this_iterator = 1;
+       digits[size] = 1;
 
     return *this;
 }
 
-
-BigInt &BigInt::operator+=(long long) {
-
-    return *this;
-}
 
 
 BigInt BigInt::operator-(const BigInt& big) {
@@ -136,24 +134,24 @@ BigInt BigInt::operator*(const BigInt &big) {
 }
 
 BigInt& BigInt::operator*=(const BigInt& big) {
-    auto this_iterator = digits.begin();
-    auto that_iterator = big.digits.begin();
-    BigInt ret (1);
-    for(;this_iterator != digits.end(); this_iterator++){
-        for(; that_iterator != big.digits.end(); that_iterator++){
-            ret += *that_iterator * *this_iterator;
-        }
-
-
-
-    }
+//    auto this_iterator = digits.begin();
+//    auto that_iterator = big.digits.begin();
+//    BigInt ret (1);
+//    for(;this_iterator != digits.end(); this_iterator++){
+//        for(; that_iterator != big.digits.end(); that_iterator++){
+//            ret += *that_iterator * *this_iterator;
+//        }
+//
+//
+//
+//    }
     return *this;
 }
 
 
 std::string BigInt::to_string() {
     std::ostringstream stream;
-    for(int i = size+1; i < digits.size(); i++)
+    for(int i = size-1; i < digits.size(); i++)
         stream<<digits[i];
     std::string ret = stream.str();
 
