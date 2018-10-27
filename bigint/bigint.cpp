@@ -70,32 +70,33 @@ BigInt BigInt::operator+(const BigInt &big) {
 }
 
 BigInt& BigInt::operator+=(const BigInt& big) {
-    auto this_iterator = digits.begin();
-    auto that_iterator = big.digits.begin();
+    auto this_iterator = digits.end()-1;
+    auto that_iterator = big.digits.end()-1;
     int sum = 0;
 
-    while(this_iterator != digits.end() || that_iterator != big.digits.end()){
+    while(this_iterator != digits.begin() || that_iterator != big.digits.begin()){
 
-        if(that_iterator != big.digits.end()){
+        if(that_iterator != big.digits.begin()){
             sum += *that_iterator;
-            ++that_iterator;
+            --that_iterator;
         }
-        if(this_iterator != digits.end()){
+        if(this_iterator != digits.begin()){
             sum += *this_iterator;
         }
         else{
-            //accounts for when second number is longer than first
-            //digits[size] = 0;
-            this_iterator = digits.end()-1;
+           // accounts for when second number is longer than first
+            digits[size] = 0;
+            this_iterator = digits.end()-2;
         }
 
         *this_iterator = sum % 10;
-        ++this_iterator;
+        --this_iterator;
         sum /= 10;
 
     }
+
     if(sum)
-        digits[size] = 1;
+        --*this_iterator = 1;
 
     return *this;
 }
@@ -107,48 +108,48 @@ BigInt &BigInt::operator+=(long long) {
 }
 
 
-//BigInt BigInt::operator-(const BigInt& big) {
-//    BigInt ref = *this;
-//    ref -= big;
-//    return ref;
-//}
-//
-//BigInt& BigInt::operator-=(const BigInt& big) {
-//    auto this_iterator = digits.begin();
-//    auto that_iterator = big.digits.begin();
-//    int difference = 0;
-//    while(that_iterator != big.digits.end() || this_iterator != digits.end()){
-//        int borrow = 0;
-//        if(this_iterator != digits.end()){
-//
-//        }
-//    }
-//    return *this;
-//}
-//
-//
-//
-//BigInt BigInt::operator*(const BigInt &big) {
-//    BigInt ref = *this;
-//    ref *= big;
-//    return ref;
-//}
-//
-//BigInt& BigInt::operator*=(const BigInt& big) {
-//    auto this_iterator = digits.begin();
-//    auto that_iterator = big.digits.begin();
-//    BigInt ret (1);
-//    for(;this_iterator != digits.end(); this_iterator++){
-//        for(; that_iterator != big.digits.end(); that_iterator++){
-//            ret += *that_iterator * *this_iterator;
-//        }
-//
-//
-//
-//    }
-//    return *this;
-//}
-//
+BigInt BigInt::operator-(const BigInt& big) {
+    BigInt ref = *this;
+    ref -= big;
+    return ref;
+}
+
+BigInt& BigInt::operator-=(const BigInt& big) {
+    auto this_iterator = digits.begin();
+    auto that_iterator = big.digits.begin();
+    int difference = 0;
+    while(that_iterator != big.digits.end() || this_iterator != digits.end()){
+        int borrow = 0;
+        if(this_iterator != digits.end()){
+
+        }
+    }
+    return *this;
+}
+
+
+
+BigInt BigInt::operator*(const BigInt &big) {
+    BigInt ref = *this;
+    ref *= big;
+    return ref;
+}
+
+BigInt& BigInt::operator*=(const BigInt& big) {
+    auto this_iterator = digits.begin();
+    auto that_iterator = big.digits.begin();
+    BigInt ret (1);
+    for(;this_iterator != digits.end(); this_iterator++){
+        for(; that_iterator != big.digits.end(); that_iterator++){
+            ret += *that_iterator * *this_iterator;
+        }
+
+
+
+    }
+    return *this;
+}
+
 
 std::string BigInt::to_string() {
     std::ostringstream stream;
