@@ -85,11 +85,11 @@ BigInt& BigInt::operator+=(const BigInt& big) {
             sum += *this_iterator;
             --size;
         }
-//        else{
-//           // accounts for when second number is longer than first
-//            digits[size] = 0;
-//            this_iterator = digits.begin()+1;
-//        }
+        else{
+           // accounts for when second number is longer than first
+            digits[size] = 0;
+            this_iterator = digits.end()-1;
+        }
 
         *this_iterator = sum % 10;
         --this_iterator;
@@ -151,7 +151,7 @@ BigInt& BigInt::operator*=(const BigInt& big) {
 
 std::string BigInt::to_string() {
     std::ostringstream stream;
-    for(int i = size-1; i < digits.size(); i++)
+    for(int i = size; i < digits.size(); i++)
         stream<<digits[i];
     std::string ret = stream.str();
 
