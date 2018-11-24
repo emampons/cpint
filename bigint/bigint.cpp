@@ -113,15 +113,11 @@ BigInt BigInt::operator-(const BigInt& big) {
 }
 
 BigInt& BigInt::operator-=(const BigInt& big) {
+    //TODO - Grab bigger of the two
     auto this_iterator = digits.begin();
     auto that_iterator = big.digits.begin();
-    int difference = 0;
-    while(that_iterator != big.digits.end() || this_iterator != digits.end()){
-        int borrow = 0;
-        if(this_iterator != digits.end()){
 
-        }
-    }
+
     return *this;
 }
 
@@ -134,22 +130,24 @@ BigInt BigInt::operator*(const BigInt &big) {
 }
 
 BigInt& BigInt::operator*=(const BigInt& big) {
-//    auto this_iterator = digits.begin();
-//    auto that_iterator = big.digits.begin();
+//    auto this_iterator = digits.end()-1;
+//    auto that_iterator = big.digits.end()-1;
 //    BigInt ret (1);
 //    for(;this_iterator != digits.end(); this_iterator++){
 //        for(; that_iterator != big.digits.end(); that_iterator++){
 //            ret += *that_iterator * *this_iterator;
 //        }
-//
-//
-//
-//    }
+
+
+
+   // }
+    //TODO - Fix not to return stack memory address
     return *this;
 }
 
 
 std::string BigInt::to_string() {
+    //TODO - Wonky tostring
     std::ostringstream stream;
     for(int i = size; i < digits.size(); i++)
         stream<<digits[i];
